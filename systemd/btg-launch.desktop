@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Beat the Guard
+Comment=Start booth mode: lock the desktop and open the full-screen board
+Exec=/PATH/TO/beat-the-guard/scripts/launch_demo.sh
+Icon=/PATH/TO/beat-the-guard/app/static/icons/icon-512.png
+Terminal=false
+Categories=Utility;

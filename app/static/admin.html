@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Guard Admin</title>
+<link rel="stylesheet" href="/static/css/brand.css">
+<link rel="stylesheet" href="/static/css/admin.css">
+</head>
+<body>
+<main class="admin">
+  <header class="top">
+    <div class="title">
+      <svg class="shield" viewBox="0 0 34 34" aria-hidden="true"><path d="M17 2 L30 7 V16 C30 24 24.5 29.5 17 32 C9.5 29.5 4 24 4 16 V7 Z" fill="#004BDF"/><path d="M11 17 L15.5 21.5 L23.5 12.5" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="square"/></svg>
+      <div>
+        <div class="label">Beat the Guard · Booth admin</div>
+        <h1>Admin</h1>
+      </div>
+    </div>
+    <div class="top-actions">
+      <a class="btn hidden" id="b-board" href="/board">Back to board</a>
+      <button class="btn btn-quiet hidden" id="b-logout">Log out</button>
+    </div>
+  </header>
+
+  <form id="f-login" class="block login">
+    <div class="label">Password</div>
+    <input type="password" id="in-pw" autocomplete="current-password">
+    <div class="err" id="login-err"></div>
+    <button class="btn" type="submit">Log in</button>
+  </form>
+
+  <div id="panel" class="hidden">
+    <section class="grid4">
+      <div class="block tile"><div class="label">Model</div><div class="v" id="h-model">–</div><div class="s" id="h-model-s"></div></div>
+      <div class="block tile"><div class="label">Decision latency</div><div class="v" id="h-lat">–</div><div class="s" id="h-lat-s"></div></div>
+      <div class="block tile"><div class="label">GPU</div><div class="v" id="h-gpu">–</div><div class="s" id="h-gpu-s"></div></div>
+      <div class="block tile"><div class="label">Network</div><div class="v" id="h-net">–</div><div class="s" id="h-net-s"></div></div>
+    </section>
+
+    <section class="grid4">
+      <div class="block tile"><div class="label">Players</div><div class="v" id="c-players">0</div></div>
+      <div class="block tile"><div class="label">Leads (consented)</div><div class="v" id="c-leads">0</div></div>
+      <div class="block tile"><div class="label">Attempts</div><div class="v" id="c-attempts">0</div></div>
+      <div class="block tile"><div class="label">Gaps to review</div><div class="v" id="c-gaps">0</div></div>
+    </section>
+
+    <section class="block actions">
+      <div class="label">Controls</div>
+      <div class="row">
+        <button class="btn" id="b-test">Run test verdict</button>
+        <a class="btn" href="/api/admin/export/report.pdf">Download lead report (PDF)</a>
+        <a class="btn" href="/api/admin/export.zip">Download encrypted export</a>
+        <button class="btn btn-light" id="b-demo">Demo mode: off</button>
+      </div>
+      <div class="row">
+        <button class="btn btn-light" id="b-reset">Reset leaderboard</button>
+        <button class="btn btn-light" id="b-restart">Restart model</button>
+        <button class="btn btn-light" id="b-wipe">Archive &amp; wipe all data</button>
+      </div>
+      <div class="row">
+        <button class="btn btn-light" id="b-maint">Maintenance mode (unlock desktop)</button>
+        <button class="btn btn-light" id="b-relock">Relock kiosk</button>
+      </div>
+      <p class="msg" id="msg"></p>
+      <p class="note">Game: <b id="play-url"></b> <span id="wifi-line"></span> <span id="links-line"></span> <span id="clock-line"></span></p>
+      <p class="note">Demo mode: new players are excluded from the board, stats and ranks (still exported, flagged demo=1). Reset leaderboard keeps all players, leads and attempts. Archive &amp; wipe copies the database to <code>data/archive/</code> first.</p>
+    </section>
+
+    <section class="block checks">
+      <div class="label">Checks</div>
+      <div class="row">
+        <button class="btn" id="b-preflight">Run preflight</button>
+        <button class="btn btn-light" id="b-arm">Arm rehearsal check for next boot</button>
+        <button class="btn btn-light" id="b-rehearsal">Show last rehearsal result</button>
+      </div>
+      <pre class="out hidden" id="check-out"></pre>
+    </section>
+
+    <section class="block usb">
+      <div class="label">Export to USB</div>
+      <p class="note" id="usb-summary">Checking for drives…</p>
+      <div class="row" id="usb-drives"></div>
+      <p class="msg" id="usb-msg"></p>
+    </section>
+
+    <section class="block">
+      <div class="label">Logged gaps (guard said YES)</div>
+      <table class="tbl"><thead><tr><th>When</th><th>Player</th><th>Mission</th><th>Request</th><th>Reviewed</th></tr></thead><tbody id="gaps"></tbody></table>
+    </section>
+
+    <section class="block">
+      <div class="label">Leaderboard moderation</div>
+      <table class="tbl"><thead><tr><th>#</th><th>Initials</th><th>Mission</th><th>Score</th><th></th></tr></thead><tbody id="lb"></tbody></table>
+    </section>
+  </div>
+</main>
+<script src="/static/js/admin.js"></script>
+</body>
+</html>

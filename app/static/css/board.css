@@ -1,0 +1,93 @@
+/* /board: big screen, 10-foot readability. Sizes scale with viewport. */
+html { font-size: clamp(14px, 1.15vw, 34px); }
+body { height: 100vh; overflow: hidden; }
+.board { height: 100vh; display: flex; flex-direction: column; gap: 1.4rem; padding: 2rem 2.4rem 1.2rem; }
+.head { display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; }
+.head h1 { font-size: 4.2rem; margin-top: 0.3rem; }
+.badge { background: var(--block); padding: 1rem 1.4rem; min-width: 22rem; }
+.badge.ok { background: var(--accent); color: var(--on-accent); }
+.badge.ok .label { color: var(--on-accent); }
+.badge-text { font-size: 1.5rem; font-weight: 700; margin-top: 0.4rem; }
+
+.stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; }
+.stat { padding: 1.4rem 1.6rem; }
+.num { font-size: 4.4rem; font-weight: 700; line-height: 1; margin-top: 0.6rem; font-variant-numeric: tabular-nums; }
+
+.main { flex: 1; min-height: 0; display: grid; grid-template-columns: 1.3fr 1fr 0.75fr; gap: 1.4rem; }
+.leader { padding: 1.6rem 2rem; overflow: hidden; }
+.lb { list-style: none; margin-top: 1rem; display: flex; flex-direction: column; }
+.lb li { display: grid; grid-template-columns: 2.6rem 6rem 1fr auto auto; align-items: baseline; gap: 1rem; padding: 0.55rem 0; font-size: 1.7rem; }
+.lb .pos { color: var(--accent); font-weight: 700; }
+.lb .ini { font-weight: 700; letter-spacing: 0.12em; }
+.lb .mis { font-size: 1.15rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.lb .beat { background: var(--accent); color: var(--on-accent); font-weight: 700; font-size: 0.75rem; letter-spacing: 0.14em; padding: 0.2rem 0.5rem; align-self: center; }
+.lb .pts.won { color: var(--accent); }
+.lb .pts { font-weight: 700; font-variant-numeric: tabular-nums; }
+.empty { font-size: 1.6rem; margin-top: 1rem; }
+
+.side { display: contents; }
+.play { order: 3; display: flex; flex-direction: column; gap: 1rem; min-height: 0; }
+.qrs { flex: 1; min-height: 0; display: flex; flex-direction: column; gap: 0.8rem; justify-content: flex-start; align-items: center; }
+.qr-step { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
+.qr-step img { height: 14vh; width: auto; aspect-ratio: 1; background: #fff; padding: 0.5rem; }
+.qrs.single .qr-step img { height: 26vh; }
+.step-label { font-size: 1.1rem; font-weight: 700; }
+.step-val { font-size: 0.95rem; font-weight: 700; color: var(--accent); word-break: break-all; text-align: center; }
+.card { order: 2; min-height: 0; overflow: hidden; padding: 2rem; display: flex; flex-direction: column; gap: 0.6rem; transition: opacity 0.4s; }
+.card.fade { opacity: 0; }
+.card-big { font-size: 6rem; font-weight: 700; line-height: 1; margin-top: 0.4rem; }
+.card-text { font-size: 1.8rem; line-height: 1.3; }
+.card-src { font-size: 0.95rem; margin-top: auto; opacity: 0.85; }
+.badge-sub { font-size: 1rem; margin-top: 0.3rem; }
+
+.foot { text-align: center; }
+.play-here { flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 1rem; }
+.here-big { font-size: 3.4rem; font-weight: 700; line-height: 1.05; }
+.here-sub { font-size: 1.4rem; line-height: 1.35; }
+.attract-bar { text-align: center; font-size: 2rem; font-weight: 700; padding: 1rem; animation: attract 2.4s ease-in-out infinite; }
+@keyframes attract { 50% { opacity: 0.55; } }
+body.attract .card-big { font-size: 4.8rem; }
+body.attract .card-text { font-size: 1.45rem; }
+body.attract .card { padding: 1.6rem 2rem; }
+body.attract .lb li { padding-top: 0.35rem; padding-bottom: 0.35rem; font-size: 1.55rem; }
+
+/* enterprise polish */
+.head { align-items: center; }
+.title { display: flex; align-items: center; gap: 1.2rem; }
+.title .shield { width: 4.2rem; height: 4.2rem; flex: none; }
+.stat { display: flex; flex-direction: column; }
+.stat .sub { font-size: 0.95rem; color: var(--muted); margin-top: 0.5rem; font-weight: 700; letter-spacing: 0.02em; }
+.lb li:first-child .pos, .lb li:first-child .ini { color: var(--accent); }
+.lb li:first-child { font-size: 1.95rem; }
+.lb li + li { box-shadow: none; }
+
+/* ---- v2: full-bleed HP-blue band, black story card ------------------------ */
+.board { padding-top: 0; }
+.head { background: var(--accent); color: var(--on-accent); margin: 0 -2.4rem; padding: 1.8rem 2.4rem; align-items: center; }
+.head .label { color: rgba(255, 255, 255, 0.78); }
+.head h1 { font-size: 4rem; letter-spacing: -0.03em; }
+.head .shield path:first-child { fill: #FFFFFF; }
+.head .shield path:last-child { stroke: #004BDF; }
+.badge { background: var(--accent-press); color: var(--on-accent); min-width: 26rem; }
+.badge .label { color: rgba(255, 255, 255, 0.78); }
+.badge.ok { background: #FFFFFF; color: var(--accent); }
+.badge.ok .label { color: var(--accent); }
+.badge.ok .badge-sub { color: var(--ink); }
+.stat .num { font-size: 4.8rem; letter-spacing: -0.03em; }
+.card { background: #111827; }
+.card .label { color: #9DB9F5; }
+.card-big { letter-spacing: -0.03em; }
+.card-src { color: rgba(255, 255, 255, 0.7); }
+.lb li { border: 0; }
+.lb { margin-left: -1rem; margin-right: -1rem; }
+.lb li { padding-left: 1rem; padding-right: 1rem; }
+.lb li:first-child { background: var(--accent); color: var(--on-accent); }
+.lb li:first-child .pos, .lb li:first-child .ini, .lb li:first-child .mis, .lb li:first-child .pts { color: var(--on-accent); }
+.lb li:first-child .beat { background: #FFFFFF; color: var(--accent); }
+body.attract .here-big { font-size: 2.9rem; }
+body.attract .here-sub { font-size: 1.2rem; }
+.play-here { min-height: 0; overflow: hidden; }
+@media (max-width: 1600px) {
+  .here-big, body.attract .here-big { font-size: 2.3rem; }
+  .here-sub, body.attract .here-sub { font-size: 1.05rem; }
+}

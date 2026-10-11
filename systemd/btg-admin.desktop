@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Guard Admin
+Comment=Beat the Guard booth admin (Ctrl+Alt+A)
+Exec=/PATH/TO/beat-the-guard/scripts/admin_window.sh
+Terminal=false
+Icon=/PATH/TO/beat-the-guard/app/static/icons/icon-512.png
+Categories=Utility;

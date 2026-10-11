@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<title>Beat the Guard</title>
+<meta name="theme-color" content="#004BDF">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Beat the Guard">
+<meta name="format-detection" content="telephone=no, email=no, address=no">
+<link rel="manifest" href="/static/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/static/icons/demo.svg">
+<link rel="stylesheet" href="/static/css/brand.css">
+<link rel="stylesheet" href="/static/css/play.css">
+</head>
+<body>
+<header class="appbar">
+  <div class="brand">
+    <svg viewBox="0 0 34 34" aria-hidden="true"><path d="M17 2 L30 7 V16 C30 24 24.5 29.5 17 32 C9.5 29.5 4 24 4 16 V7 Z" fill="#004BDF"/><path d="M11 17 L15.5 21.5 L23.5 12.5" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="square"/></svg>
+    <span class="brand-name">Beat the Guard</span>
+    <span class="brand-sep"></span>
+    <span class="brand-sub">ResearchGuard on HP ZGX Nano</span>
+  </div>
+  <ol class="steps" id="steps" aria-label="Progress">
+    <li data-step="s-start"><b>01</b><span>Sign in</span></li>
+    <li data-step="s-missions"><b>02</b><span>Mission</span></li>
+    <li data-step="s-game"><b>03</b><span>Play</span></li>
+    <li data-step="s-end"><b>04</b><span>Results</span></li>
+  </ol>
+  <div class="chip" id="guard-chip"><i></i><span id="guard-chip-text">Guard ready · on-device</span></div>
+</header>
+
+<main id="app">
+
+  <!-- 1. SIGN IN -------------------------------------------------------- -->
+  <section id="s-start" class="screen split">
+    <div class="field-blue hero">
+      <div class="eyebrow">AI governance challenge</div>
+      <h1>Can you get an AI agent past your university's governance?</h1>
+      <p class="lede">Every request is judged by ResearchGuard, a governance model running on this device. It decides before the agent touches the data.</p>
+      <dl class="figures">
+        <div><dt>Attempts</dt><dd>3</dd></div>
+        <div><dt>Seconds</dt><dd>90</dd></div>
+        <div><dt>Missions</dt><dd>6</dd></div>
+        <div><dt>Bytes to the cloud</dt><dd>0</dd></div>
+      </dl>
+      <p class="hero-foot">All scenario data is synthetic.</p>
+    </div>
+
+    <div class="work">
+      <form id="f-start" class="form signin" autocomplete="off">
+        <div class="work-head">
+          <div class="label">Player sign-in</div>
+          <h2>Enter your initials to play</h2>
+          <p class="muted">Only your initials appear on the leaderboard.</p>
+        </div>
+        <label class="field">
+          <span class="field-label">Initials</span>
+          <input id="in-initials" type="text" maxlength="3" required inputmode="text" autocapitalize="characters" placeholder="ABC">
+        </label>
+        <div class="grid2">
+          <label class="field"><span class="field-label">Name <i>optional</i></span><input id="in-name" type="text" maxlength="120"></label>
+          <label class="field"><span class="field-label">Work email <i>optional</i></span><input id="in-email" type="email" maxlength="200" inputmode="email"></label>
+          <label class="field"><span class="field-label">Institution <i>optional</i></span><input id="in-inst" type="text" maxlength="200"></label>
+          <label class="field"><span class="field-label">Role <i>optional</i></span>
+            <select id="in-role">
+              <option value="">Choose…</option>
+              <option>CIO</option><option>CISO / Security</option><option>IT Director</option>
+              <option>Research Computing</option><option>Faculty / Researcher</option><option>Other</option>
+            </select>
+          </label>
+        </div>
+        <label class="consent">
+          <input id="in-consent" type="checkbox">
+          <span>HP may contact me about a 30-day pilot, a governance workshop, or a meeting with an HP Z specialist. Without this, only your initials and role are stored.</span>
+        </label>
+        <div class="err" id="start-err" role="alert"></div>
+        <div class="warming hidden" id="warming">
+          <b>Guard starting up</b>
+          <span>The on-device model is loading. This takes about a minute after a restart.</span>
+        </div>
+        <button class="btn btn-xl" type="submit" id="b-start">Start <span aria-hidden="true">→</span></button>
+      </form>
+    </div>
+  </section>
+
+  <!-- 2. PICK A MISSION ------------------------------------------------- -->
+  <section id="s-missions" class="screen page">
+    <div class="page-head">
+      <div>
+        <div class="label">Step 2 of 4</div>
+        <h1>Choose your mission</h1>
+      </div>
+      <p class="muted">Six real higher-ed situations, all with synthetic data. Harder missions score more.</p>
+    </div>
+    <div id="mission-list" class="mission-list"></div>
+  </section>
+
+  <!-- 3. PLAY ----------------------------------------------------------- -->
+  <section id="s-game" class="screen split game">
+    <div class="timebar" aria-hidden="true"><i id="g-timebar"></i></div>
+
+    <aside class="field-blue casefile" aria-label="Case file">
+      <div class="eyebrow" id="g-role">Mission</div>
+      <h2 id="g-title"></h2>
+      <p id="g-scenario" class="brief"></p>
+      <p id="g-goal" class="goal"></p>
+      <div class="cf-block sample">
+        <div class="eyebrow">The data · synthetic</div>
+        <ul id="g-sample"></ul>
+      </div>
+      <div class="cf-block facts">
+        <div class="eyebrow">What the guard knows</div>
+        <ul id="g-facts"></ul>
+      </div>
+    </aside>
+
+    <div class="work">
+      <div class="gamebar">
+        <div class="meter">
+          <span class="meter-label">Attempts left</span>
+          <div class="attempts" id="g-attempts" aria-label="attempts left"></div>
+        </div>
+        <div class="meter meter-time">
+          <span class="meter-label">Seconds</span>
+          <div class="timer" id="g-timer">90</div>
+        </div>
+        <button class="btn btn-quiet end-btn" id="b-end" type="button">End mission</button>
+      </div>
+
+      <div class="end-confirm hidden" id="end-confirm">
+        <span class="end-q">End this mission now? You keep the points you have so far.</span>
+        <button class="btn end-yes" id="b-end-yes" type="button">Yes, end mission</button>
+        <button class="btn end-no" id="b-end-no" type="button">Keep playing</button>
+      </div>
+
+      <form id="f-attempt" class="attempt">
+        <label class="label" for="in-attempt">Your request to <span id="g-agent">the AI agent</span></label>
+        <textarea id="in-attempt" rows="4" maxlength="600" placeholder="Write it the way a busy or sneaky colleague would…"></textarea>
+        <div class="attempt-row">
+          <span class="count" id="g-count">0 / 600</span>
+          <button class="btn" id="b-send" type="submit">Send to agent <span aria-hidden="true">→</span></button>
+        </div>
+        <div class="err" id="game-err" role="alert"></div>
+      </form>
+
+      <div id="verdict" class="verdict hidden" aria-live="polite">
+        <div class="verdict-top">
+          <div class="verdict-word" id="v-word"></div>
+          <div class="verdict-side">
+            <div class="label">Guard verdict</div>
+            <div class="verdict-sub" id="v-sub"></div>
+            <div class="verdict-meta" id="v-meta"></div>
+          </div>
+        </div>
+        <div class="reasons hidden" id="v-reasons-wrap">
+          <div class="label">Why</div>
+          <ul id="v-reasons"></ul>
+        </div>
+      </div>
+
+      <ol id="history" class="history"></ol>
+    </div>
+  </section>
+
+  <!-- 4. RESULT --------------------------------------------------------- -->
+  <section id="s-end" class="screen page result">
+    <div class="result-hero" id="result-hero">
+      <div class="rh-main">
+        <div class="eyebrow" id="end-status">Final score</div>
+        <div id="end-banner" class="hidden">
+          <h2>Gap found and logged for review.</h2>
+          <p>This is what AI red teaming looks like.</p>
+        </div>
+      </div>
+      <div class="rh-score">
+        <div class="score" id="end-score">0</div>
+        <div class="rank" id="end-rank"></div>
+      </div>
+    </div>
+
+    <div class="result-body">
+      <div class="takeaway-col">
+        <div class="label">Your campus shadow AI takeaway</div>
+        <ol id="end-takeaways" class="takeaways"></ol>
+      </div>
+      <div class="follow">
+        <div class="label">Take it back to campus</div>
+        <div class="offers">
+          <button class="offer" data-offer="pilot" type="button"><b>30-day pilot</b><span>Run the guard against your own policies, on your hardware.</span><i aria-hidden="true">→</i></button>
+          <button class="offer" data-offer="workshop" type="button"><b>Governance workshop</b><span>Map your AI policy to decisions an agent can enforce.</span><i aria-hidden="true">→</i></button>
+          <button class="offer" data-offer="specialist" type="button"><b>Talk to a Z specialist</b><span>Size an on-prem AI workstation for your campus.</span><i aria-hidden="true">→</i></button>
+        </div>
+
+        <form id="f-interest" class="form interest hidden" autocomplete="off">
+          <div class="label">So HP can follow up</div>
+          <div class="grid2">
+            <label class="field"><span class="field-label">Work email</span><input id="i-email" type="email" required maxlength="200" inputmode="email"></label>
+            <label class="field"><span class="field-label">Name <i>optional</i></span><input id="i-name" type="text" maxlength="120"></label>
+          </div>
+          <label class="consent"><input id="i-consent" type="checkbox" required><span>HP may contact me about this offer.</span></label>
+          <div class="err" id="i-err" role="alert"></div>
+          <button class="btn" type="submit">Send</button>
+        </form>
+        <p class="thanks hidden" id="thanks"></p>
+      </div>
+    </div>
+
+    <div class="ext hidden" id="ext">
+      <div class="label">Take it with you · scan with your own phone camera</div>
+      <div class="ext-grid" id="ext-grid"></div>
+    </div>
+
+    <div class="end-actions">
+      <button class="btn btn-xl" id="b-again">Play another mission <span aria-hidden="true">→</span></button>
+      <button class="btn btn-quiet btn-xl" id="b-done">Done</button>
+    </div>
+  </section>
+
+</main>
+<footer class="foot"><span class="label">Processed on-device · HP ZGX Nano · All scenario data is synthetic</span></footer>
+<script src="/static/js/play.js"></script>
+</body>
+</html>

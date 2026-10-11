@@ -1,0 +1,31 @@
+html { font-size: 17px; }
+.admin { max-width: 1280px; margin: 0 auto; padding: 28px 24px 48px; display: flex; flex-direction: column; gap: 20px; }
+.top { display: flex; justify-content: space-between; align-items: flex-end; }
+.top h1 { font-size: 2.4rem; margin-top: 4px; }
+.login { max-width: 420px; display: flex; flex-direction: column; gap: 12px; }
+.login input { background: var(--bg); font-size: 1.2rem; padding: 14px; }
+.err { color: var(--accent); font-weight: 700; min-height: 1.2em; }
+#panel { display: flex; flex-direction: column; gap: 20px; }
+.grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.tile .v { font-size: 2rem; font-weight: 700; margin-top: 8px; }
+.tile .s { font-size: 0.9rem; margin-top: 6px; color: var(--muted); line-height: 1.35; }
+.actions .row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; }
+.btn { min-height: 52px; font-size: 0.9rem; padding: 0 22px; text-decoration: none; }
+.btn-light { background: var(--bg); color: var(--accent); }
+.btn-light.on { background: var(--accent); color: var(--on-accent); }
+.msg { margin-top: 14px; font-weight: 700; color: var(--accent); min-height: 1.2em; }
+.note { margin-top: 8px; font-size: 0.9rem; color: var(--muted); }
+.tbl { width: 100%; border-collapse: separate; border-spacing: 0 4px; margin-top: 12px; font-size: 0.95rem; }
+.tbl th { text-align: left; font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--accent); padding: 6px 8px; }
+.tbl td { padding: 8px; vertical-align: top; background: var(--bg); }
+.tbl td.req { max-width: 560px; }
+.tbl button { background: var(--block); color: var(--accent); font: 700 0.8rem Arial, Helvetica, sans-serif; letter-spacing: 0.08em; text-transform: uppercase; padding: 8px 12px; cursor: pointer; }
+.tbl button.on { background: var(--accent); color: var(--on-accent); }
+@media (max-width: 800px) { .grid4 { grid-template-columns: 1fr 1fr; } }
+.usb .row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; }
+.checks .row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 12px; }
+.out { margin-top: 14px; background: var(--bg); padding: 14px; font: 0.85rem "Courier New", Courier, monospace; white-space: pre-wrap; max-height: 420px; overflow: auto; }
+.top-actions { display: flex; gap: 12px; }
+.title { display: flex; align-items: center; gap: 14px; }
+.title .shield { width: 44px; height: 44px; flex: none; }
+.admin .btn { min-height: 52px; font-size: 0.85rem; padding: 0 22px; }

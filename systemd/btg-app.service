@@ -1,0 +1,16 @@
+[Unit]
+Description=Beat the Guard: web app (/play, /board, /admin on port 80)
+After=network.target btg-model.service
+Wants=btg-model.service
+
+[Service]
+User=demo
+WorkingDirectory=%h/Projects/beat-the-guard
+Environment=BTG_PORT=80
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+ExecStart=%h/Projects/beat-the-guard/scripts/start_app.sh
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target

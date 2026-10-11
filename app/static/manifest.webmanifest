@@ -1,0 +1,17 @@
+{
+  "name": "Beat the Guard",
+  "short_name": "Beat the Guard",
+  "start_url": "/play",
+  "scope": "/",
+  "display": "fullscreen",
+  "orientation": "landscape",
+  "background_color": "#FFFFFF",
+  "theme_color": "#004BDF",
+  "icons": [
+    {
+      "src": "/static/icons/demo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

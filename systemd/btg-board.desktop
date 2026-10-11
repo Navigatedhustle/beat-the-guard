@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=Beat the Guard board
+Exec=/PATH/TO/beat-the-guard/scripts/board_kiosk.sh
+X-GNOME-Autostart-enabled=true
+NoDisplay=true

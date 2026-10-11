@@ -1,0 +1,16 @@
+[Unit]
+Description=Beat the Guard: ResearchGuard V6 model server (vLLM, localhost:8001)
+After=docker.service
+Requires=docker.service
+
+[Service]
+User=demo
+ExecStart=%h/Projects/beat-the-guard/scripts/start_model.sh
+ExecStop=/usr/bin/docker stop -t 20 btg-sentinel
+Restart=always
+RestartSec=10
+TimeoutStartSec=0
+TimeoutStopSec=40
+
+[Install]
+WantedBy=multi-user.target

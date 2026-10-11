@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beat the Guard</title>
+<link rel="stylesheet" href="/static/css/brand.css">
+<link rel="stylesheet" href="/static/css/board.css">
+</head>
+<body>
+<main class="board">
+  <header class="head">
+    <div class="title">
+      <svg class="shield" viewBox="0 0 34 34" aria-hidden="true"><path d="M17 2 L30 7 V16 C30 24 24.5 29.5 17 32 C9.5 29.5 4 24 4 16 V7 Z" fill="#004BDF"/><path d="M11 17 L15.5 21.5 L23.5 12.5" fill="none" stroke="#FFFFFF" stroke-width="3" stroke-linecap="square"/></svg>
+      <div>
+        <div class="label">AI governance challenge · Runs where the data lives</div>
+        <h1>Beat the Guard</h1>
+      </div>
+    </div>
+    <div class="badge" id="net-badge">
+      <div class="label">Network · checked live</div>
+      <div class="badge-text" id="net-text">Checking…</div>
+      <div class="badge-sub" id="net-sub"></div>
+    </div>
+  </header>
+
+  <section class="stats">
+    <div class="block stat"><div class="label">Attempts</div><div class="num" id="st-attempts">0</div><div class="sub">requests judged</div></div>
+    <div class="block stat"><div class="label">Blocked by the guard</div><div class="num" id="st-blocked">–</div><div class="sub">before the agent acted</div></div>
+    <div class="block stat"><div class="label">Avg decision time</div><div class="num" id="st-ms">–</div><div class="sub">on this device</div></div>
+    <div class="block stat"><div class="label">Gaps found</div><div class="num" id="st-gaps">0</div><div class="sub">logged for review</div></div>
+  </section>
+
+  <section class="main">
+    <div class="block leader">
+      <div class="label">Leaderboard</div>
+      <ol id="lb" class="lb"></ol>
+      <p class="empty" id="lb-empty">Be the first on the board.</p>
+    </div>
+    <div class="side">
+      <div class="block play">
+        <div class="label">Play now</div>
+        <div class="play-here hidden" id="play-here">
+          <div class="here-big">Play right here</div>
+          <div class="here-sub">Press any key or tap the screen to start. 3 attempts, 90 seconds.</div>
+        </div>
+        <div class="qrs">
+          <div class="qr-step hidden" id="step-wifi">
+            <img id="qr-wifi" alt="QR code to join the booth Wi-Fi">
+            <div class="step-label">1 · Join Wi-Fi</div>
+            <div class="step-val" id="wifi-ssid"></div>
+          </div>
+          <div class="qr-step">
+            <img id="qr-play" alt="QR code to play">
+            <div class="step-label" id="play-step">Scan to play</div>
+            <div class="step-val" id="play-url"></div>
+          </div>
+        </div>
+      </div>
+      <div class="block-accent card" id="card">
+        <div class="label">Why it matters</div>
+        <div class="card-big" id="card-big"></div>
+        <div class="card-text" id="card-text"></div>
+        <div class="card-src" id="card-src"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="block-accent attract-bar hidden" id="attract-bar">Press any key or tap the screen to play</div>
+
+  <footer class="foot"><span class="label">ResearchGuard on HP ZGX Nano · Processed on-device · All scenario data is synthetic</span></footer>
+</main>
+<script src="/static/js/board.js"></script>
+</body>
+</html>

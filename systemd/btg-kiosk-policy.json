@@ -1,0 +1,17 @@
+{
+  "DeveloperToolsAvailability": 2,
+  "AllowFileSelectionDialogs": false,
+  "PrintingEnabled": false,
+  "BrowserGuestModeEnabled": false,
+  "BrowserAddPersonEnabled": false,
+  "TaskManagerEndProcessEnabled": false,
+  "BookmarkBarEnabled": false,
+  "PasswordManagerEnabled": false,
+  "TranslateEnabled": false,
+  "SearchSuggestEnabled": false,
+  "SpellCheckServiceEnabled": false,
+  "MetricsReportingEnabled": false,
+  "SafeBrowsingProtectionLevel": 0,
+  "BackgroundModeEnabled": false,
+  "URLBlocklist": ["file://*", "chrome://*", "chrome-untrusted://*", "chrome-extension://*", "devtools://*", "view-source:*", "javascript:*"]
+}

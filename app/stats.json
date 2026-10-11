@@ -1,0 +1,60 @@
+{
+  "_note": "Only figures verified against the cited source on 2026-09-23. See docs/SOURCES.md before adding any.",
+  "cards": [
+    {
+      "big": "56%",
+      "text": "of higher ed staff have used AI tools their institution didn't provide for work.",
+      "source": "EDUCAUSE, The Impact of AI on Work in Higher Education (2026)"
+    },
+    {
+      "big": "54%",
+      "text": "of higher ed staff know their institution's AI use policies. The rest are guessing.",
+      "source": "EDUCAUSE, The Impact of AI on Work in Higher Education (2026)"
+    },
+    {
+      "big": "24 of 24",
+      "text": "fully compliant requests approved, and 24 of 24 half-compliant ones held as CONDITIONAL. It says YES when the records say YES. It's a guard, not a wall.",
+      "source": "Beat the Guard over-blocking test on this Nano: 48 synthetic requests, 6 scenarios, Sept 2026"
+    },
+    {
+      "big": "30%",
+      "text": "of higher ed cybersecurity and privacy professionals aren't aware of their institution's AI policies.",
+      "source": "EDUCAUSE, The Impact of AI on Work in Higher Education (2026)"
+    },
+    {
+      "big": "94%",
+      "text": "of higher ed workers use AI tools.",
+      "source": "EDUCAUSE, The Impact of AI on Work in Higher Education (2026)"
+    },
+    {
+      "big": "1 in 4",
+      "text": "malicious breaches is now AI-enabled, at an average cost of $6M.",
+      "source": "IBM, Cost of a Data Breach Report 2026"
+    },
+    {
+      "big": "$5.89M",
+      "text": "average loss from prompt injection incidents against AI models and apps. That's what you're attempting here.",
+      "source": "IBM, Cost of a Data Breach Report 2026"
+    },
+    {
+      "big": "92%",
+      "text": "of organizations with an AI-related breach lacked proper AI access controls.",
+      "source": "IBM, Cost of a Data Breach Report 2026"
+    },
+    {
+      "big": "40%",
+      "text": "of organizations use access controls on AI models and data.",
+      "source": "IBM, Cost of a Data Breach Report 2026"
+    },
+    {
+      "big": "$4.99M",
+      "text": "global average cost of a data breach, up 12% in a year.",
+      "source": "IBM, Cost of a Data Breach Report 2026"
+    },
+    {
+      "big": "#1",
+      "text": "issue on the 2026 EDUCAUSE Top 10 is Collaborative Cybersecurity. #5 is Knowledge Management for Safer AI.",
+      "source": "EDUCAUSE, 2026 Top 10"
+    }
+  ]
+}
